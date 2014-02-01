@@ -1,0 +1,52 @@
+{
+    "name": "Base config",
+
+    "version": "0.1",
+
+    "root": "../frontend/",
+
+    "modules": {
+
+        "$": {
+            "path": "vendor/jquery/jquery-2.1.0.min.js",
+            "exports": "jQuery"
+        },
+
+        "_": {
+            "path": "vendor/lodash/lodash-2.4.1.min.js",
+            "exports": "_"
+        },
+
+        "underscore": "@_",
+
+        "Backbone": {
+            "path": "vendor/backbone/backbone-1.1.0.js",
+            "require": {
+                "underscore": "_",
+                "jQuery": "$"
+            },
+            "exports": "Backbone"
+        },
+
+        "App": "app/app.js",
+
+        "models/<%= file %>": "app/models/*.js",
+        "collections/<%= file %>": "app/collections/*.js",
+
+        "views/<%= file %>": "app/views/*/*.js"
+
+    },
+
+    "styles": [
+        "vendor/**/*.css",
+        "app/views/*/*.css"
+    ],
+
+    "main": "App",
+
+    "lazy": true,
+
+    "css": true,
+
+    "shortcuts": true
+}

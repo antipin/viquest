@@ -1,0 +1,19 @@
+{
+    "name": "Production build config",
+
+    "root": "../frontend/",
+
+    "extends": "./base.lmd.json",
+
+    "output": "../public/app.min.js",
+
+    "www_root": "../public",
+
+    "styles_output": "../public/app.min.css",
+
+    "log": false,
+
+    "warn": false,
+
+    "pack": true
+}
