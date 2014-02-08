@@ -30,11 +30,12 @@
 
         "App": "app/app.js",
 
+        "Router": "app/router.js",
+
         "models/<%= file %>": "app/models/*.js",
         "collections/<%= file %>": "app/collections/*.js",
-
-        "views/<%= file %>": "app/views/*/*.js"
-
+        "views/<%= file %>": "app/views/*/*.js",
+        "tpl/<%= file %>": "app/views/*/*.html"
     },
 
     "styles": [
@@ -43,8 +44,6 @@
     ],
 
     "main": "App",
-
-    "lazy": true,
 
     "css": true,
 

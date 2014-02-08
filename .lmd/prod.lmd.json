@@ -7,8 +7,6 @@
 
     "output": "../public/app.min.js",
 
-    "www_root": "../public",
-
     "styles_output": "../public/app.min.css",
 
     "log": false,
