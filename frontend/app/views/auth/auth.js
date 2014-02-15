@@ -2,8 +2,8 @@ var BaseView = require('views/base-view');
 
 module.exports = BaseView.extend({
 
-    className: 'stage',
+    className: 'auth',
 
-    tpl: require('tpl/stage')
+    tpl: require('tpl/auth')
 
 });
