@@ -1,16 +1,40 @@
-(function() {
+var $ = require('$'),
+    Router = require('Router'),
+    ViewPage = require('views/page');
 
-    var Backbone = require('Backbone'),
-        Stage = require('models/stage');
+module.exports = (function() {
 
-    console.log('App inited');
+    var _router,
+        _rootView;
 
-    var mStage = new Stage({
-        title: 'Найи ключ',
-        description: 'подсказок не будет, думай сама',
-        completed: false
-    });
+    var _setRootView = function(view) {
+        _rootView = view;
+        $('body').empty().append(_rootView.render().el);
+    };
 
-    console.log(mStage);
+    var _setRouter = function(router) {
+        _router = router;
+    };
 
-})();
+    return {
+
+        initialize: function() {
+            _setRootView(new ViewPage());
+            _setRouter(new Router());
+        },
+
+        getRouter: function() {
+            return _router;
+        },
+
+        setContent: function() {
+            _rootView.setContent.apply(_rootView, arguments);
+        },
+
+        go: function(path) {
+            this.getRouter().navigate(path, {
+                trigger: true
+            });
+        }
+    }
+}());

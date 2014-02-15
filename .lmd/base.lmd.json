@@ -33,14 +33,15 @@
             "exports": "Backbone"
         },
 
+        "Main": "app/main.js",
         "App": "app/app.js",
-
         "Router": "app/router.js",
 
-        "models/<%= file %>": "app/models/*.js",
-        "collections/<%= file %>": "app/collections/*.js",
-        "views/<%= file %>": "app/views/*/*.js",
-        "tpl/<%= file %>": "app/views/*/*.html"
+        "routes/<%= file %>":        "app/routes/*.js",
+        "models/<%= file %>":        "app/models/*.js",
+        "collections/<%= file %>":   "app/collections/*.js",
+        "views/<%= file %>":         "app/views/*/*.js",
+        "tpl/<%= file %>":           "app/views/*/*.html"
     },
 
     "styles": [
@@ -48,7 +49,7 @@
         "app/views/*/*.css"
     ],
 
-    "main": "App",
+    "main": "Main",
 
     "css": true,
 
