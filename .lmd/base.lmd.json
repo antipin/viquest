@@ -33,6 +33,11 @@
             "exports": "Backbone"
         },
 
+        "sjcl": {
+            "path": "vendor/sjcl/sjcl.js",
+            "exports": "sjcl"
+        },
+
         "Main": "app/main.js",
         "App": "app/app.js",
         "Router": "app/router.js",
