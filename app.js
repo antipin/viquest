@@ -4,7 +4,6 @@ var express = require('express');
 
 var app = express();
 
-
 app.set('port', 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -27,16 +26,16 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', function(req, res){
+var routeHandler = function(req, res) {
     res.render('index', {
         title: "EJS example",
         header: "Some users"
     });
-});
+};
 
-
-//app.get('/auth/twitter', routes.authTwitter);
-//app.get('/auth/twitter/callback', routes.authTwitterCallback);
+app.get('/', routeHandler);
+app.get('/auth', routeHandler);
+app.get('/step/:id', routeHandler);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
