@@ -17,6 +17,11 @@
             "exports": "_"
         },
 
+        "Handlebars": {
+            "path": "vendor/handlebars/handlebars-v1.3.0.js",
+            "exports": "Handlebars"
+        },
+
         "underscore": "@_",
 
         "Backbone": {
