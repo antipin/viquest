@@ -4,18 +4,35 @@ var Backbone = require('Backbone'),
 module.exports = Backbone.View.extend({
 
     initialize: function() {
+
+        var classes = ['view'];
+
+        this._name = this.name ? 'view-' + this.name : '';
+        classes.push(this._name);
+        this.$el.addClass(classes.join(' '));
+
         this._childView = null;
         this.template = Handlebars.compile(this.tpl);
     },
 
     render: function() {
 
-        var model = (this.model && this.model.toJSON()) || {};
+        var modelJSON = (this.model && this.model.toJSON()) || {};
+
+        modelJSON.dump = JSON.stringify(modelJSON, null, 4);
 
         if (this.template) {
-            this.$el.html(this.template(model));
+            this.$el.html(this.template(modelJSON));
         }
         return this;
+    },
+
+    elemSelector: function(name) {
+        return '.' + this._name + '__' + name;
+    },
+
+    $elem: function(name) {
+        return this.$(this.elemSelector(name));
     },
 
     setContent: function(view) {

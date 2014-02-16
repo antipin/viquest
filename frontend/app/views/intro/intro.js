@@ -3,9 +3,9 @@ var App = require('App'),
 
 module.exports = BaseView.extend({
 
-    tpl: require('tpl/intro'),
+    name: 'intro',
 
-    className: 'intro',
+    tpl: require('tpl/intro'),
 
     events: {
         "click button" : "onButtonCLick"

@@ -1,9 +1,18 @@
-var BaseView = require('views/base-view');
+var App = require('App'),
+    BaseView = require('views/base-view');
 
 module.exports = BaseView.extend({
 
-    className: 'auth',
+    name: 'auth',
 
-    tpl: require('tpl/auth')
+    tpl: require('tpl/auth'),
+
+    events: {
+        "click button" : "onButtonCLick"
+    },
+
+    onButtonCLick: function() {
+        App.go('stage/0');
+    }
 
 });
