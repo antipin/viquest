@@ -1,11 +1,13 @@
 var $ = require('$'),
     Router = require('Router'),
+    CollectionQuest = require('collections/quest'),
     ViewPage = require('views/page');
 
 module.exports = (function() {
 
     var _router,
-        _rootView;
+        _rootView,
+        _questCollection;
 
     var _setRootView = function(view) {
         _rootView = view;
@@ -27,13 +29,19 @@ module.exports = (function() {
             return _router;
         },
 
+        getQuestCollection: function() {
+            if (_questCollection) return _questCollection;
+            return (_questCollection = new CollectionQuest());
+        },
+
         setContent: function() {
             _rootView.setContent.apply(_rootView, arguments);
         },
 
         go: function(path) {
             this.getRouter().navigate(path, {
-                trigger: true
+                trigger: true,
+                replace: true
             });
         }
     }
