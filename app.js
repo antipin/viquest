@@ -1,8 +1,12 @@
-var http = require('http');
-var path = require('path');
-var express = require('express');
+var _        = require('lodash'),
+    http     = require('http'),
+    path     = require('path'),
+    express  = require('express'),
+    url      = require('url'),
 
-var app = express();
+    quest    = require('./quest.js'),
+
+    app      = express();
 
 app.set('port', 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -23,19 +27,34 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }
 
 var routeHandler = function(req, res) {
-    res.render('index', {
-        title: "EJS example",
-        header: "Some users"
-    });
+    res.render('index');
 };
 
-app.get('/', routeHandler);
-app.get('/auth', routeHandler);
-app.get('/step/:id', routeHandler);
+var restHandler = function(req, res) {
+
+    var queryParams = url.parse(req.url, true).query,
+        stage = quest.getStage(req.params.id, queryParams.key);
+
+    if (stage) {
+        res.json(stage);
+    } else {
+        res.send('403: Forbidden', 403);
+
+    }
+}
+
+// User interface ages
+var routes = [ '/', '/auth', '/stage/:id' , '/success' ];
+routes.forEach(function(route) {
+    app.get(route, routeHandler);
+});
+
+// REST api
+app.get('/rest/stage/:id', restHandler);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
