@@ -8,7 +8,10 @@
     "modules": {
 
         "$": {
-            "path": "vendor/jquery/jquery-2.1.0.min.js",
+            "path": [
+                "vendor/jquery/jquery-2.1.0.min.js",
+                "vendor/jquery/plugins/jquery-debounce-min.js"
+            ],
             "exports": "jQuery"
         },
 

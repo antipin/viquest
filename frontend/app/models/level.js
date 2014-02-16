@@ -1,4 +1,5 @@
-var Backbone = require('Backbone'),
+var $ = require('jQuery'),
+    Backbone = require('Backbone'),
     sjcl = require('sjcl');
 
 module.exports = Backbone.Model.extend({
@@ -18,19 +19,15 @@ module.exports = Backbone.Model.extend({
     },
 
     initialize: function() {
-        this.on('change:key', this._checkLock, this);
+        this.on('change:key', $.debounce(this._checkLock, 250, this), this);
     },
 
     fetch: function() {
 
-        var App = require('App');
-
-        var prevLevel = App.getQuestCollection().at(this.get('id') - 1);
-
         return this.constructor.__super__.fetch.call(this, {
             url: this.url(),
             data: {
-                key: prevLevel && prevLevel.get('key')
+                key: this.getKeyChain()
             }
         });
     },
@@ -39,8 +36,22 @@ module.exports = Backbone.Model.extend({
         return this.get('isLast') ? false : this.get('id') + 1;
     },
 
-    _checkLock: function(model, value) {
-        var keySHA256Digest = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(value));
-        this.set('isUnlocked', this.get('keyHash') === keySHA256Digest);
+    getKeyChain: function() {
+
+        var App = require('App');
+
+        var keyChain = App.getQuestCollection().reduce(function(memo, level) {
+            return memo + level.get('key');
+        }, '');
+
+        return keyChain;
+    },
+
+    _checkLock: function() {
+        
+        var keyChain = this.getKeyChain(),
+            keyChainSHA256Digest = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(keyChain));
+
+        this.set('isUnlocked', this.get('keyHash') === keyChainSHA256Digest);
     }
 });
