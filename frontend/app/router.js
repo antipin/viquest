@@ -6,22 +6,31 @@ var Backbone = require('Backbone'),
             Backbone.history.start({
                 pushState: true
             });
+            
+            
+            console.log(require('routes/help'));
         },
 
         routes: {
-            "":            "index",
-            "auth":        "auth",
-            "level/:id":   "level",
-            "success":     "success"
+            '':            'index',
+            'rtfm':        'rtfm',
+            'help':        'help',
+            'auth':        'auth',
+            'level/:id':   'level',
+            'success':     'success'
         },
 
-        index: require('routes/index'),
+        index:     require('routes/index'),
 
-        auth: require('routes/auth'),
+        rtfm:      require('routes/rtfm'),
 
-        level: require('routes/level'),
+        help:     require('routes/help'),
 
-        success: require('routes/success')
+        auth:      require('routes/auth'),
+
+        level:     require('routes/level'),
+
+        success:   require('routes/success')
 
     });
 

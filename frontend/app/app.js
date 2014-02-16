@@ -40,8 +40,7 @@ module.exports = (function() {
 
         go: function(path) {
             this.getRouter().navigate(path, {
-                trigger: true,
-                replace: true
+                trigger: true
             });
         }
     }

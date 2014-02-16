@@ -12,7 +12,10 @@ module.exports = Backbone.View.extend({
         this.$el.addClass(classes.join(' '));
 
         this._childView = null;
-        this.template = Handlebars.compile(this.tpl);
+
+        if (this.tpl) {
+            this.template = Handlebars.compile(this.tpl);
+        }
     },
 
     render: function() {

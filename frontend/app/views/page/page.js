@@ -7,13 +7,8 @@ var Backbone = require('Backbone'),
 
 module.exports = BaseView.extend({
 
-    tag: 'div',
+    name: 'container',
 
-    initialize: function() {},
-
-    render: function() {
-
-        return this;
-    }
+    el: 'body'
 
 });

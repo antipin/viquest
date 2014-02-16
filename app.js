@@ -48,9 +48,9 @@ var restHandler = function(req, res) {
 }
 
 // User interface ages
-var routes = [ '/', '/auth', '/level/:id' , '/success' ];
+var routes = [ '', 'rtfm', 'help', 'auth', 'level/:id' , 'success' ];
 routes.forEach(function(route) {
-    app.get(route, routeHandler);
+    app.get('/' + route, routeHandler);
 });
 
 // REST api

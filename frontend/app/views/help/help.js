@@ -3,15 +3,15 @@ var App = require('App'),
 
 module.exports = BaseView.extend({
 
-    name: 'intro',
+    name: 'rtfm',
 
-    tpl: require('tpl/intro'),
+    tpl: require('tpl/help'),
 
     events: {
         "click button" : "onButtonCLick"
     },
 
     onButtonCLick: function() {
-        App.go('rtfm');
+        App.go('auth');
     }
 });
