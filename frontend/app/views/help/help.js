@@ -12,6 +12,6 @@ module.exports = BaseView.extend({
     },
 
     onButtonCLick: function() {
-        App.go('auth');
+        App.go('level/0');
     }
 });

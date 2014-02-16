@@ -15,7 +15,6 @@ var Backbone = require('Backbone'),
             '':            'index',
             'rtfm':        'rtfm',
             'help':        'help',
-            'auth':        'auth',
             'level/:id':   'level',
             'success':     'success'
         },
@@ -25,8 +24,6 @@ var Backbone = require('Backbone'),
         rtfm:      require('routes/rtfm'),
 
         help:     require('routes/help'),
-
-        auth:      require('routes/auth'),
 
         level:     require('routes/level'),
 
