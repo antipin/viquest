@@ -3,9 +3,9 @@ var App = require('App'),
 
 module.exports = BaseView.extend({
 
-    name: 'stage',
+    name: 'level',
 
-    tpl: require('tpl/stage'),
+    tpl: require('tpl/level'),
 
     initialize: function() {
 
@@ -35,7 +35,7 @@ module.exports = BaseView.extend({
     onNextClick: function() {
 
         var next = this.model.getNextId(),
-            path = (next === false) ? 'success' : 'stage/' + next;
+            path = (next === false) ? 'success' : 'level/' + next;
 
         App.go(path);
     }

@@ -11,7 +11,7 @@ var Backbone = require('Backbone'),
         routes: {
             "":            "index",
             "auth":        "auth",
-            "stage/:id":   "stage",
+            "level/:id":   "level",
             "success":     "success"
         },
 
@@ -19,7 +19,7 @@ var Backbone = require('Backbone'),
 
         auth: require('routes/auth'),
 
-        stage: require('routes/stage'),
+        level: require('routes/level'),
 
         success: require('routes/success')
 

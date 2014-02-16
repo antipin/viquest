@@ -12,7 +12,7 @@ module.exports = BaseView.extend({
     },
 
     onButtonCLick: function() {
-        App.go('stage/0');
+        App.go('level/0');
     }
 
 });

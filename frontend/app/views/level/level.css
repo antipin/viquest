@@ -1,10 +1,10 @@
-.view-stage {}
+.view-level {}
 
-.view-stage__next-button {
+.view-level__next-button {
     display: none;
 }
 
-.view-stage__content {
+.view-level__content {
     background-color: #FFF;
     padding: 10px;
     border: 1px solid #ccc;

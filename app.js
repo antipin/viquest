@@ -37,10 +37,10 @@ var routeHandler = function(req, res) {
 var restHandler = function(req, res) {
 
     var queryParams = url.parse(req.url, true).query,
-        stage = quest.getStage(req.params.id, queryParams.key);
+        level = quest.getLevel(req.params.id, queryParams.key);
 
-    if (stage) {
-        res.json(stage);
+    if (level) {
+        res.json(level);
     } else {
         res.send('403: Forbidden', 403);
 
@@ -48,13 +48,13 @@ var restHandler = function(req, res) {
 }
 
 // User interface ages
-var routes = [ '/', '/auth', '/stage/:id' , '/success' ];
+var routes = [ '/', '/auth', '/level/:id' , '/success' ];
 routes.forEach(function(route) {
     app.get(route, routeHandler);
 });
 
 // REST api
-app.get('/rest/stage/:id', restHandler);
+app.get('/rest/level/:id', restHandler);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

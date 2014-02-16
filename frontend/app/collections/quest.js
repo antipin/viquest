@@ -1,9 +1,9 @@
 var Backbone = require('Backbone'),
-    ModelStage   = require('models/stage');
+    ModelLevel   = require('models/level');
 
 module.exports = Backbone.Collection.extend({
 
-    model: ModelStage,
+    model: ModelLevel,
 
     comparator: 'id'
 

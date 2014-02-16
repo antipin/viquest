@@ -13,10 +13,10 @@ var Quest = (function() {
     }
 
     function _preprocessQuest(quest) {
-        return quest.map(function(stage, idx) {
-            return _.extend(stage, {
+        return quest.map(function(level, idx) {
+            return _.extend(level, {
                 id: idx,
-                keyHash: crypto.createHash('sha256').update(stage.key).digest('hex'),  // SHA256 hash of secret key
+                keyHash: crypto.createHash('sha256').update(level.key).digest('hex'),  // SHA256 hash of secret key
                 isLast: idx === (quest.length - 1)
             });
         });
@@ -24,26 +24,26 @@ var Quest = (function() {
 
     /**
      *
-     * @param {Number} stageIndex Stage number (starts from 0)
-     * @param {String} [previousStageKey] Secret key of previous stage
+     * @param {Number} levelIndex Level number (starts from 0)
+     * @param {String} [prevLevelKey] Secret key of previous level
      * @returns {Object}
      */
-    Quest.prototype.getStage = function(stageIndex, previousStageKey) {
+    Quest.prototype.getLevel = function(levelIndex, prevLevelKey) {
 
-        var targetStage = null,
-            stage = this._quest[stageIndex],
-            prevStage = this._quest[stageIndex - 1] || null;
+        var targetLevel = null,
+            level = this._quest[levelIndex],
+            prevLevel = this._quest[levelIndex - 1] || null;
 
-        // If we have no prev stage or prev stage key is correct
-        if (!prevStage || (prevStage && previousStageKey === prevStage.key)) {
+        // If we have no prev level or prev level key is correct
+        if (!prevLevel || (prevLevel && prevLevelKey === prevLevel.key)) {
 
-            targetStage = _.clone(stage);
+            targetLevel = _.clone(level);
 
-            // Remove secret key from public stage object
-            targetStage.key = '';
+            // Remove secret key from public level object
+            targetLevel.key = '';
         }
 
-        return targetStage;
+        return targetLevel;
     }
 
     return Quest;

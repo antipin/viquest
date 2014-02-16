@@ -4,17 +4,17 @@ var Backbone = require('Backbone'),
 module.exports = Backbone.Model.extend({
 
     url: function() {
-        return "/rest/stage/" + this.get('id');
+        return "/rest/level/" + this.get('id');
     },
 
     defaults: {
-        id:           '',    // Stage id (index)
+        id:           '',    // Level id (index)
         title:        '',    // Title
         keyHash:      '',    // SHA256 hash of secret key
         key:          '',    // Secret key. Assumes to be input bu user
-        content:      '',    // HTML content of stage
-        isLast:       '',    // true if stage is last one
-        isUnlocked:   false  // true if stage is unlocked.
+        content:      '',    // HTML content of level
+        isLast:       '',    // true if level is last one
+        isUnlocked:   false  // true if level is unlocked.
     },
 
     initialize: function() {
@@ -25,12 +25,12 @@ module.exports = Backbone.Model.extend({
 
         var App = require('App');
 
-        var prevStage = App.getQuestCollection().at(this.get('id') - 1);
+        var prevLevel = App.getQuestCollection().at(this.get('id') - 1);
 
         return this.constructor.__super__.fetch.call(this, {
             url: this.url(),
             data: {
-                key: prevStage && prevStage.get('key')
+                key: prevLevel && prevLevel.get('key')
             }
         });
     },
