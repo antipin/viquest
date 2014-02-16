@@ -9,9 +9,8 @@ module.exports = (function() {
         _rootView,
         _questCollection;
 
-    var _setRootView = function(view) {
-        _rootView = view;
-        $('body').empty().append(_rootView.render().el);
+    var _setRootView = function() {
+        _rootView = new ViewPage();
     };
 
     var _setRouter = function(router) {
@@ -21,7 +20,7 @@ module.exports = (function() {
     return {
 
         initialize: function() {
-            _setRootView(new ViewPage());
+            _setRootView();
             _setRouter(new Router());
         },
 
