@@ -19,15 +19,14 @@ module.exports = Backbone.View.extend({
     },
 
     render: function() {
-
-        var modelJSON = (this.model && this.model.toJSON()) || {};
-
-        modelJSON.dump = JSON.stringify(modelJSON, null, 4);
-
         if (this.template) {
-            this.$el.html(this.template(modelJSON));
+            this.$el.html(this.template(this.getTemplateData()));
         }
         return this;
+    },
+
+    getTemplateData: function() {
+        return this.model && this.model.toJSON() || {};
     },
 
     elemSelector: function(name) {

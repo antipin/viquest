@@ -9,6 +9,8 @@
 
 .view h1 {
     text-align: center;
+    margin-top: 0.2em;
+    margin-bottom: 0.8em;
 }
 
 .bottom-block {
