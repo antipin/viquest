@@ -6,9 +6,6 @@ var Backbone = require('Backbone'),
             Backbone.history.start({
                 pushState: true
             });
-            
-            
-            console.log(require('routes/help'));
         },
 
         routes: {
