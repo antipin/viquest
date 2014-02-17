@@ -9,17 +9,30 @@ module.exports = Backbone.Model.extend({
     },
 
     defaults: {
-        id:           '',    // Level id (index)
+        id:           0,     // Level id (index)
+        total:        0,     // Total levels
         title:        '',    // Title
         keyHash:      '',    // SHA256 hash of secret key
         key:          '',    // Secret key. Assumes to be input bu user
         content:      '',    // HTML content of level
+        image:        '',    // Level image
         isLast:       '',    // true if level is last one
         isUnlocked:   false  // true if level is unlocked.
     },
 
     initialize: function() {
-        this.on('change:key', $.debounce(this._checkLock, 250, this), this);
+        this.on('change:key', $.debounce(this._checkLock, 100, this), this);
+    },
+
+    toJSON: function() {
+
+        var modeJSON = this.constructor.__super__.toJSON.apply(this, arguments),
+            extraFields = {
+                current: this.get('id') + 1,
+                progress: this.get('total') ? this.get('id') / this.get('total') : 0,
+            }
+
+        return _.extend(modeJSON, extraFields);
     },
 
     fetch: function() {
@@ -48,7 +61,7 @@ module.exports = Backbone.Model.extend({
     },
 
     _checkLock: function() {
-        
+
         var keyChain = this.getKeyChain(),
             keyChainSHA256Digest = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(keyChain));
 

@@ -28,6 +28,7 @@ var Quest = (function() {
 
             return _.extend(level, {
                 id: idx,
+                total: quest.length,
                 key: keyChain,
                 keyHash: crypto.createHash('sha256').update(keyChain).digest('hex'),  // SHA256 hash of key chain
                 isLast: idx === (quest.length - 1)
