@@ -36,7 +36,7 @@ h1.view-level__progress-info {
 }
 
 .view-level__location {
-    display: block;
+    display: none;
     position: absolute;
     bottom: 5px;
     right: 5px;

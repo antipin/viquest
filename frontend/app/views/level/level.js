@@ -1,7 +1,8 @@
 var App = require('App'),
     BaseView = require('views/base-view'),
 
-    SHOW_HELP_TIMEOUT = 30000;
+    SHOW_LOCATION_TIMEOUT = 40000,
+    SHOW_HELP_TIMEOUT = 60000;
 
 module.exports = BaseView.extend({
 
@@ -14,6 +15,7 @@ module.exports = BaseView.extend({
         this.listenTo(this.model, "request sync error", this.render);
         this.listenTo(this.model, "change:isUnlocked", this.unlock);
 
+        setTimeout(this.showLocation.bind(this), SHOW_LOCATION_TIMEOUT);
         setTimeout(this.showHelp.bind(this), SHOW_HELP_TIMEOUT);
 
         return this.constructor.__super__.initialize.apply(this, arguments);
@@ -27,6 +29,10 @@ module.exports = BaseView.extend({
 
     showHelp: function() {
         this.$elem('help').fadeIn();
+    },
+
+    showLocation: function() {
+        this.$elem('location').fadeIn();
     },
 
     getTemplateData: function() {
