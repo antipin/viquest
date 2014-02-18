@@ -19,6 +19,12 @@ module.exports = BaseView.extend({
         return this.constructor.__super__.initialize.apply(this, arguments);
     },
 
+    render: function() {
+        this.constructor.__super__.render.apply(this, arguments);
+        this.$elem('key-input').focus();
+        return this;
+    },
+
     showHelp: function() {
         this.$elem('help').fadeIn();
     },
