@@ -44,6 +44,7 @@ h1.view-level__progress-info {
     font-size: 11px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(255,255,255);
+    color: #333;
     opacity: 0.5;
 }
 

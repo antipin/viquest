@@ -7,8 +7,19 @@ var Backbone = require('Backbone'),
 
 module.exports = BaseView.extend({
 
-    name: 'container',
+    name: 'page',
 
-    el: 'body'
+    theme: 'light',
+
+    el: 'body',
+
+    initialize: function() {
+
+        if (this.theme) {
+            this.$el.addClass('view-page_theme_' + this.theme);
+        }
+
+        return this.constructor.__super__.initialize.apply(this, arguments);
+    }
 
 });
