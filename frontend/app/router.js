@@ -9,18 +9,13 @@ var Backbone = require('Backbone'),
         },
 
         routes: {
-            '':            'index',
-            'rtfm':        'rtfm',
-            'help':        'help',
+            '':            'intro',
+            'intro/:id':   'intro',
             'level/:id':   'level',
             'success':     'success'
         },
 
-        index:     require('routes/index'),
-
-        rtfm:      require('routes/rtfm'),
-
-        help:     require('routes/help'),
+        intro:     require('routes/intro'),
 
         level:     require('routes/level'),
 

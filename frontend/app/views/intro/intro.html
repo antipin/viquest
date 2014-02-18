@@ -1,10 +1,15 @@
-<h1>Привет, Вика!</h1>
-<p>Как насчет ненадолго отвлечься от работы и пройти несложный квест по зданию Яндекса?</p>
-<p>Разгадав все уровни, ты найдешь небольшой подарок.</p>
-<p>Уверен, ты не сможешь устоять :)</p>
-<p><small><strong>P.S.</strong> Надежнее всего открыть этот сайт в хроме или сафари и использовать
-   портретную ориентацию.</small></p>
+{{#if title}}
+<h1>{{title}}</h1>
+{{/if}}
 
+{{#if content}}{{#each content}}
+<p>{{{this}}}</p>
+{{/each}}{{/if}}
+
+{{#if actions}}
 <div class="bottom-block">
-    <button class="btn btn-lg btn-block btn-primary">Обожаю квесты!</button>
+    {{#each actions}}
+    <button class="btn btn-lg btn-block btn-primary">{{{this}}}</button>
+    {{/each}}
 </div>
+{{/if}}
