@@ -8,8 +8,16 @@ module.exports = BaseView.extend({
     tpl: require('tpl/intro'),
 
     initialize: function() {
+        this.$el.addClass('view-intro_index_' + this.model.get('id'));
         this.listenTo(this.model, "request sync error", this.render);
         return this.constructor.__super__.initialize.apply(this, arguments);
+    },
+
+    getTemplateData: function() {
+        var data = this.constructor.__super__.getTemplateData.apply(this, arguments);
+        return _.extend(data, {
+            isFirst: data.id === 0
+        });
     },
 
     events: {

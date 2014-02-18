@@ -37,10 +37,9 @@ module.exports = BaseView.extend({
 
     getTemplateData: function() {
         var data = this.constructor.__super__.getTemplateData.apply(this, arguments);
-        data = _.extend(data, {
+        return _.extend(data, {
             _progress: Math.round(data.progress * 100)
         });
-        return data;
     },
 
     unlock: function(model, isUnlocked) {
