@@ -1,5 +1,7 @@
 var Backbone = require('Backbone'),
-    Handlebars = require('Handlebars');
+    Handlebars = require('Handlebars'),
+
+    FADE_SPEED = 'fast';
 
 module.exports = Backbone.View.extend({
 
@@ -38,21 +40,41 @@ module.exports = Backbone.View.extend({
     },
 
     setContent: function(view) {
-        this.removeContent();
-        this._childView = view;
-        this.$el.html(view.render().el);
+
+        var _this = this;
+
+        if (this._childView) {
+            this._childView.$el.fadeOut(FADE_SPEED, function() {
+                _this.swapChildView();
+                _this._show(view);
+            });
+        } else {
+            this._childView = view;
+            this._show(view);
+        }
+
         return this;
     },
 
-    removeContent: function() {
+    _show: function(view) {
+        var $viewElement = view.render().$el;
+        $viewElement.css('display', 'none');
+        this.$el.html($viewElement)
+        $viewElement.fadeIn(FADE_SPEED);
+    },
+
+    swapChildView: function(view) {
         if (this._childView != null) {
             this._childView.remove();
             this._childView = null;
         }
+        if (view) {
+            this._childView = view;
+        }
     },
 
     remove: function() {
-        this.removeContent();
+        this.swapChildView();
         return this.constructor.__super__.initialize.apply(this, arguments);
     }
 
