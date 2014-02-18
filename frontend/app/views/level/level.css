@@ -23,6 +23,7 @@ h1.view-level__progress-info {
 }
 
 .view-level__content {
+    position: relative;
     background-color: #FFF;
     border: 1px solid #CCC;
 }
@@ -32,6 +33,18 @@ h1.view-level__progress-info {
     width: 278px;
     text-align: center;
     color: #CCC;
+}
+
+.view-level__location {
+    display: block;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    padding: 3px 6px;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(255,255,255);
+    opacity: 0.5;
 }
 
 .view-level__image span {

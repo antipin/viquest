@@ -16,6 +16,7 @@ module.exports = Backbone.Model.extend({
         key:          '',    // Secret key. Assumes to be input bu user
         content:      '',    // HTML content of level
         image:        '',    // Level image
+        location:     '',    // Level target location
         isLast:       '',    // true if level is last one
         isUnlocked:   false  // true if level is unlocked.
     },
