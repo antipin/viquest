@@ -44,7 +44,7 @@ var restLevelHandler = function(req, res) {
     var queryParams = url.parse(req.url, true).query,
         level = quest.getLevel(req.params.id, queryParams.key);
 
-    if (level) {
+    if (level && queryParams.auth === AUTH_KEY) {
         res.json(level);
     } else {
         res.send('403: Forbidden', 403);

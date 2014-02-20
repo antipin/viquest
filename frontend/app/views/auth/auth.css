@@ -9,9 +9,14 @@
 
 .view-auth__controls {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 20px;
     right: 20px;
+}
+
+.view-auth__content {
+    padding: 1em 0;
+    text-align: center;
 }
 
 .view-auth__key {

@@ -1,7 +1,12 @@
 module.exports = function() {
 
     var App          = require('App'),
-        ViewIntro    = require('views/success');
+        ViewIntro    = require('views/success'),
+        ViewError    = require('views/error');
 
-    App.setContent(new ViewIntro());
+    if (App.getAuthKey()) {
+        App.setContent(new ViewIntro());
+    } else {
+        App.setContent(new ViewError());
+    }
 };

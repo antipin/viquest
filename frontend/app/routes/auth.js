@@ -1,6 +1,6 @@
 module.exports = function() {
 
-    var App               = require('App'),
+    var App              = require('App'),
         ModelAuth        = require('models/auth'),
         ViewAuth         = require('views/auth');
 

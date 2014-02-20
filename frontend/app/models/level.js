@@ -37,10 +37,13 @@ module.exports = Backbone.Model.extend({
 
     fetch: function() {
 
+        var App = require('App');
+
         return this.constructor.__super__.fetch.call(this, {
             url: this.url(),
             data: {
-                key: this.getKeyChain()
+                key: this.getKeyChain(),
+                auth: App.getAuthKey()
             }
         });
     },
