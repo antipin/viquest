@@ -30,7 +30,7 @@ module.exports = BaseView.extend({
 
         if (this.model.get('isLast')) {
 
-            App.go('level/0') ;
+            App.go('let-me-in') ;
 
         } else {
 

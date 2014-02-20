@@ -1,4 +1,5 @@
 var _        = require('lodash'),
+    crypto   = require('crypto'),
     http     = require('http'),
     path     = require('path'),
     express  = require('express'),
@@ -7,7 +8,10 @@ var _        = require('lodash'),
     pages    = require('./page.js'),
     quest    = require('./quest.js'),
 
-    app      = express();
+    app      = express(),
+
+    /** const */
+    AUTH_KEY = '1408';
 
 app.set('port', 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -59,14 +63,22 @@ var restPageHandler = function(req, res) {
     }
 }
 
+var restAuthHandler = function(req, res) {
+    res.json({
+        key: '',
+        keyHash: crypto.createHash('sha256').update(AUTH_KEY).digest('hex') // SHA256 hash of AUTH_KEY
+    });
+}
+
 // User interface ages
-var routes = [ '', 'intro/:id', 'level/:id' , 'success' ];
+var routes = [ '', 'intro/:id', 'let-me-in', 'level/:id' , 'success' ];
 routes.forEach(function(route) {
     app.get('/' + route, routeHandler);
 });
 
 // REST api
-app.get('/rest/page/:id', restPageHandler);
+app.get('/rest/page/:id',  restPageHandler);
+app.get('/rest/auth',      restAuthHandler);
 app.get('/rest/level/:id', restLevelHandler);
 
 http.createServer(app).listen(app.get('port'), function(){

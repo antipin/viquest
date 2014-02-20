@@ -5,7 +5,8 @@ var $ = require('$'),
 
 module.exports = (function() {
 
-    var _router,
+    var _authKey,
+        _router,
         _rootView,
         _questCollection;
 
@@ -35,6 +36,15 @@ module.exports = (function() {
 
         setContent: function() {
             _rootView.setContent.apply(_rootView, arguments);
+        },
+
+        setAuthKey: function(key) {
+            _authKey = key;
+            return this;
+        },
+
+        getAuthKey: function() {
+            return _authKey;
         },
 
         go: function(path) {
