@@ -55,6 +55,7 @@ var Quest = (function() {
 
             // Remove secret key from public level object
             targetLevel.key = '';
+            targetLevel.description = '';
         }
 
         return targetLevel;

@@ -14,7 +14,6 @@ module.exports = Backbone.Model.extend({
         title:        '',    // Title
         keyHash:      '',    // SHA256 hash of secret key
         key:          '',    // Secret key. Assumes to be input bu user
-        content:      '',    // HTML content of level
         image:        '',    // Level image
         location:     '',    // Level target location
         isLast:       '',    // true if level is last one
@@ -30,8 +29,8 @@ module.exports = Backbone.Model.extend({
         var modeJSON = this.constructor.__super__.toJSON.apply(this, arguments),
             extraFields = {
                 current: this.get('id') + 1,
-                progress: this.get('total') ? this.get('id') / this.get('total') : 0,
-            }
+                progress: this.get('total') ? this.get('id') / this.get('total') : 0
+            };
 
         return _.extend(modeJSON, extraFields);
     },
