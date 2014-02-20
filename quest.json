@@ -1,66 +1,66 @@
 [
     {
-        "key": "001",
+        "key": "TMIO",
         "description": "Кофемашина со смайликом.",
         "image": "01-coffe-and-smile.jpg",
         "location": "Строганов, 5"
     },
     {
-        "key": "002",
+        "key": "HANR",
         "description": "Переговорка дзен. Загадана знаком дзен.",
         "image": "02-zen.png",
         "location": "Строганов, 5+"
     },
     {
-        "key": "003",
+        "key": "IDGI",
         "description": "Винтовая лестница. Загадана старой винтовой лестницей.",
         "image": "03-spiral.jpg",
         "location": "Строганов, 4"
     },
     {
-        "key": "004",
+        "key": "SEGY",
         "description": "Переговорка Апельсин. Загадана помидором и апельсином.",
         "image": "04-tomato-and-orange.jpg",
         "location": "Строганов, 4"
     },
     {
-        "key": "005",
+        "key": "QFIA",
         "description": "Медведь. Загадан фоткой медведя.",
         "image": "05-bear.jpg",
         "location": "Морозов, 3"
     },
     {
-        "key": "006",
+        "key": "UORB",
         "description": "Гамак. Фотка гамака.",
         "image": "06-gagmak.jpg",
         "location": "Морозов, 4"
     },
     {
-        "key": "007",
+        "key": "ERLY",
         "description": "Светофор",
         "image": "07-traffic-lights.jpg",
         "location": "Морозов, 5"
     },
     {
-        "key": "008",
+        "key": "SAVA",
         "description": "Библиотека. Код спрятан в книгу 'Программирование на языке Ада. Номер книги 105,00559'",
         "image": "08-library.jpg",
         "location": "Морозов, 7"
     },
     {
-        "key": "009",
+        "key": "TMIL",
         "description": "Бильярдный стол. Загадан бильярдными шарами.",
         "image": "09-billiard-balls.jpg",
         "location": "Экстрополис, 2"
     },
     {
-        "key": "010",
+        "key": "IAKE",
         "description": "Код прклеен к телефону Вики. Загадан номером телефона.",
         "image": "10-phone.png",
         "location": "Строганов, 5"
     },
     {
-        "key": "011",
+        "key": "SZTX",
         "description": "Фотка подарка, спрятанного над рабочим местом Вики.",
         "image": "11-secret-place.jpg",
         "location": "Строганов, 5"
