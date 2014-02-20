@@ -2,6 +2,7 @@ var _        = require('lodash'),
     crypto   = require('crypto'),
     http     = require('http'),
     path     = require('path'),
+    fs       = require('fs'),
     express  = require('express'),
     url      = require('url'),
 
@@ -18,7 +19,29 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(express.favicon());
-app.use(express.logger('dev'));
+
+var logFile = fs.createWriteStream('./public/http.log', {
+    flags: 'a'
+});
+
+express.logger.format('tiny-date', function(tokens, req, res){
+
+    var time = new Date(),
+        hours = time.getHours() + 9,
+        minutes = time.getMinutes();
+
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    return hours + ':' + minutes + ' -> ' +
+        req.method + ' ' +
+        req.originalUrl + ' ' +
+        res.statusCode;
+});
+
+app.use(express.logger({
+    format: 'tiny-date',
+    stream: logFile
+}));
 
 app.use(express.urlencoded());
 app.use(express.json());
