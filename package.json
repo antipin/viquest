@@ -3,11 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "build": "lmd build dev",
+    "build:prod": "lmd build prod",
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.4.8",
     "ejs": "*",
+    "express": "3.4.8",
     "lodash": "~2.4.1"
+  },
+  "devDependencies": {
+    "lmd": "1.13.4"
   }
 }
