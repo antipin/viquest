@@ -104,6 +104,23 @@ app.get('/rest/page/:id',  restPageHandler);
 app.get('/rest/auth',      restAuthHandler);
 app.get('/rest/level/:id', restLevelHandler);
 
-http.createServer(app).listen(app.get('port'), function(){
+const server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+function exitHandler(options, exitCode) {
+    server.close(() => {
+        console.log('Express server is closed');
+        process.exit();
+    });
+}
+
+// do something when app is closing
+process.on('exit', exitHandler.bind(null));
+// catches ctrl+c event
+process.on('SIGINT', exitHandler.bind(null));
+// catches "kill pid" (for example: nodemon restart)
+process.on('SIGUSR1', exitHandler.bind(null));
+process.on('SIGUSR2', exitHandler.bind(null));
+// catches uncaught exceptions
+process.on('uncaughtException', exitHandler.bind(null));
